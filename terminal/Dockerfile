@@ -92,6 +92,12 @@ RUN curl -sL -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes
     mv /usr/local/bin/kubectl /usr/local/bin/kubectl-1.12.0 && \
     chmod +x /usr/local/bin/kubectl-1.12.0
 
+# Install Istio client.
+
+RUN curl -s -o /tmp/istio.tar.gz https://github.com/istio/istio/releases/download/1.0.5/istio-1.0.5-linux.tar.gz && \
+    tar -C /usr/local/bin -zxvf /tmp/istio.tar.gz istioctl && \
+    rm /tmp/istio.tar.gz
+
 # Common environment variables.
 
 ENV PYTHONUNBUFFERED=1 \
