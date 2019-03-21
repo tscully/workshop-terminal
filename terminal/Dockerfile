@@ -94,8 +94,8 @@ RUN curl -sL -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes
 
 # Install Istio client.
 
-RUN curl -s -o /tmp/istio.tar.gz https://github.com/istio/istio/releases/download/1.0.5/istio-1.0.5-linux.tar.gz && \
-    tar -C /usr/local/bin -zxvf /tmp/istio.tar.gz istioctl && \
+RUN curl -sL -o /tmp/istio.tar.gz https://github.com/istio/istio/releases/download/1.0.5/istio-1.0.5-linux.tar.gz && \
+    tar --strip-components=2 -C /usr/local/bin -zxvf /tmp/istio.tar.gz istio-1.0.5/bin/istioctl && \
     rm /tmp/istio.tar.gz
 
 # Common environment variables.
